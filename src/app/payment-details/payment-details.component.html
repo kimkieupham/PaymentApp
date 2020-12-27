@@ -1,0 +1,33 @@
+<!--Add the title for this -->
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Payment Detail Register</h1>
+</div>
+
+<!--We will show the list of insert order code -->
+<div class="row">
+    <!--So inside of the payment detail, we have show the html of the child which is the payment detail form -->
+    <div class="col-md-6">
+        <app-payment-detail-form></app-payment-detail-form>
+    </div>
+    <div class="col-md-6">
+        <!--table of the payment details-->
+        <table class="table">
+            <thead class="thead-light">
+                <th>Card Owner</th>
+                <th>Card Number</th>
+                <th>Exp. Date</th>
+                <th></th>
+            </thead>
+            <!--t head then we have t body and inside it we the rows, we iterate through the array and then display all the data in the list array-->
+            <tr *ngFor="let pd of service.list">
+                <td (click)="populateForm(pd)">{{pd.cardOwnerName}}</td> <!--using the click event to able the chnage the data in the table -->
+                <td (click)="populateForm(pd)">{{pd.cardNumber}}</td>
+                <td (click)="populateForm(pd)">{{pd.expirationDate}}</td>
+                <td>
+                    <!--this is an icon to delete the data-->
+                    <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.paymentDetailId)"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
